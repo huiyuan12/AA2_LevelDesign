@@ -7,6 +7,9 @@ TagManager:
   - GameManager
   - Money
   - Coin
+  - AllyTroop
+  - EnemyTroop
+  - CreateZone
   layers:
   - Default
   - TransparentFX

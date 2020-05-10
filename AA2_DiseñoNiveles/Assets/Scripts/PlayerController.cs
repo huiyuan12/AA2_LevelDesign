@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     private GameManager gm;
     private int coinValue;
+    private int userMoney;
+
     void Start()
     {
         speed = 2;
@@ -29,5 +31,13 @@ public class PlayerController : MonoBehaviour
             gm.AddScore(coinValue); 
             Destroy(other.gameObject);   // Destruir la moneda.
         }
+    }
+    public int GetMoney()
+    {
+        return userMoney;
+    }
+    public void SumMoney(int m)
+    {
+        userMoney += m;
     }
 }
