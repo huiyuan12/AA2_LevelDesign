@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BoxKiller.cs" />
     <Compile Include="Assets\Scripts\Buttons\HUDButtons.cs" />
+    <Compile Include="Assets\Scripts\Buttons\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\Buttons\scriptOnDrag.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\DiagonalPlatform.cs" />

@@ -12,6 +12,7 @@ TagManager:
   - CreateZone
   - Box
   - BoxKiller
+  - Enemy
   layers:
   - Default
   - TransparentFX

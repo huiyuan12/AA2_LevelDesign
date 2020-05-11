@@ -30,12 +30,13 @@ public class GameManager : MonoBehaviour
         valueDiagonalPlatform = 1;
         valueHorizontalPlatform = 0;
         valueBoxKiller = 0;
-
-       //We update the UI at Start Game
+        
+    }
+     void Update()
+    {
         scoreUI.UpdateScoreUI(coinScore);
         lifeUI.UpdateLifeUI(playerCont.GetLifes());
     }
-
     //Changes the value of Money, 
     public void SetMoney(int value)
     {
