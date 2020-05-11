@@ -13,6 +13,12 @@ TagManager:
   - Box
   - BoxKiller
   - Enemy
+  - diagonalplatf
+  - Plataforma
+  - BoxKillPlayer
+  - DestroyObject
+  - HorizontalPlatform
+  - Lose
   layers:
   - Default
   - TransparentFX

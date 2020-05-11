@@ -22,8 +22,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //velocidad runner, 
+        if (!gm.isPaused) 
         rb.velocity = new Vector3(speed, rb.velocity.y);
-
+      
     }
     void OnTriggerEnter(Collider other)
     {
@@ -56,6 +57,40 @@ public class PlayerController : MonoBehaviour
         }   
         //the same for enemy. The enemy can destroy diagonal platform, thats why we need box to kill enemy.
         if (other.tag == "Enemy")
+        {
+            lifes = PlayerPrefs.GetInt("lifes");
+            lifes -= 1;
+            if (lifes >= 1)
+            {
+                PlayerPrefs.SetInt("lifes", lifes);
+                Debug.Log("hi");
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                //game over
+
+                SceneManager.LoadScene(0);
+            }
+        }
+        if (other.tag == "Lose")
+        {
+            lifes = PlayerPrefs.GetInt("lifes");
+            lifes -= 1;
+            if (lifes >= 1)
+            {
+                PlayerPrefs.SetInt("lifes", lifes);
+                Debug.Log("hi");
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                //game over
+
+                SceneManager.LoadScene(0);
+            }
+        }
+        if (other.tag == "BoxKill   Player")
         {
             lifes = PlayerPrefs.GetInt("lifes");
             lifes -= 1;

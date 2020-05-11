@@ -25,16 +25,23 @@ public class HorizontalPlatform : MonoBehaviour
             coliders.enabled = false;
         }
         //when the player press mouse button, the object will have the position on last click of mouse, and we active colliders with the world. 
-        //Also we delete this script, otherwise the object will change always the position to last click. (Test without the Destroy)
-        if (Input.GetMouseButton(0))
+
+        if (Input.GetMouseButton(0) && isPuttedOnScene == false)
         {
-            isPuttedOnScene = true;
             var pos = Input.mousePosition;
             pos.z = 1;
             pos = Camera.main.ScreenToWorldPoint(pos);
             transform.position = pos;
             coliders.enabled = true;
-            Destroy(this);
+            isPuttedOnScene = true;
+
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DestroyObject" && isPuttedOnScene == true)
+        {
+            Destroy(gameObject);
         }
     }
 }

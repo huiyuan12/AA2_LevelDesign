@@ -15,13 +15,14 @@ public class GameManager : MonoBehaviour
     public int valueHorizontalPlatform;
     public int valueBoxKiller;
     private PlayerController playerCont;
+    public  bool isPaused;
     // Start is called before the first frame update
     void Start()
     {
         playerCont = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         scoreUI = GameObject.Find("CoinScore").GetComponent<moneyUI>();
         lifeUI = GameObject.Find("LifeScore").GetComponent<lifeUI>();
-
+        
         //Score Money
         coinScore = 0; 
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         valueDiagonalPlatform = 1;
         valueHorizontalPlatform = 0;
         valueBoxKiller = 0;
+        isPaused = false;
         
     }
      void Update()
