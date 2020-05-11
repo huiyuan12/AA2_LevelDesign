@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiagonalPlatform : MonoBehaviour
+public class BoxKiller : MonoBehaviour
 {
-    public bool isPuttedOnScene; 
+    public bool isPuttedOnScene;
     BoxCollider coliders; //colliders we will disable when we are dragging object
     void Start()
     {
@@ -16,7 +16,7 @@ public class DiagonalPlatform : MonoBehaviour
     void Update()
     {
         // if the object has not been put on the scene, the object will follow the mouse and we disable de colliders
-        if (isPuttedOnScene == false) 
+        if (isPuttedOnScene == false)
         {
             var pos = Input.mousePosition;
             pos.z = 1;

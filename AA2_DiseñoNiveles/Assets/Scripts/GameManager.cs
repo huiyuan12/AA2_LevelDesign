@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     private moneyUI scoreUI;
     public int coinValue;
     public int valueDiagonalPlatform;
-    public int HorizontalPlatform;
-    public int boxKillEnemys;
+    public int valueHorizontalPlatform;
+    public int valueBoxKiller;
     private PlayerController playerCont;
     // Start is called before the first frame update
     void Start()
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         //Giving values
         coinValue = 1;
         valueDiagonalPlatform = 1;
-        HorizontalPlatform = 0;
-        boxKillEnemys = 0;
+        valueHorizontalPlatform = 0;
+        valueBoxKiller = 0;
 
        //We update the UI at Start Game
         scoreUI.UpdateScoreUI(coinScore);

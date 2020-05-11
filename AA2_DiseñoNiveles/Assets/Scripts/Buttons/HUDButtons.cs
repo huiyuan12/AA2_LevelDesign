@@ -7,6 +7,8 @@ public class HUDButtons : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject diagPlatf;
+    public GameObject HorizontalPlatf;
+    public GameObject BoxKiller;
     private GameManager gm;
 
     void Start()
@@ -28,6 +30,30 @@ public class HUDButtons : MonoBehaviour
         {
                 GameObject newPlatf = Instantiate(diagPlatf);
             gm.SetMoney(-gm.valueDiagonalPlatform);
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
+    }
+    public void instantiateHorizontalPlaform()
+    {
+        if (gm.GetMoney() >= gm.valueHorizontalPlatform) //the function ''Returncoins'' is the same thatOriol Created in playercontroller
+        {
+            GameObject newPlatf = Instantiate(HorizontalPlatf);
+            gm.SetMoney(-gm.valueHorizontalPlatform);
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
+    }
+    public void instantiateBoxKiller()
+    {
+        if (gm.GetMoney() >= gm.valueBoxKiller) //the function ''Returncoins'' is the same thatOriol Created in playercontroller
+        {
+            GameObject newPlatf = Instantiate(BoxKiller);
+            gm.SetMoney(-gm.valueBoxKiller);
         }
         else
         {
