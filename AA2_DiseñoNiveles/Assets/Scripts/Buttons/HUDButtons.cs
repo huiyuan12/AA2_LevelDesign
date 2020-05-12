@@ -30,7 +30,6 @@ public class HUDButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
     }
 
     //Button that creates an diagonal platform if there is enough money
@@ -101,7 +100,9 @@ public class HUDButtons : MonoBehaviour
         {
             PlayerPrefs.SetInt("lifes", lifes);
             Debug.Log("hi");
-            SceneManager.LoadScene(1);
+            string scene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(scene);
+
         }
         else
         {

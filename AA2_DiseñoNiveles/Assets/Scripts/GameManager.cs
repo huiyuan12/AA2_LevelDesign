@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int level;
+  
     public int coinScore; //The total money
     // public int totalScore;
 
@@ -16,13 +16,22 @@ public class GameManager : MonoBehaviour
     public int valueBoxKiller;
     private PlayerController playerCont;
     public  bool isPaused;
+    public static int level;
     // Start is called before the first frame update
     void Start()
     {
-        playerCont = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        scoreUI = GameObject.Find("CoinScore").GetComponent<moneyUI>();
-        lifeUI = GameObject.Find("LifeScore").GetComponent<lifeUI>();
-        
+        if (GameObject.Find("PlayerController") != null)
+        {
+            playerCont = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        }
+        if (GameObject.Find("CoinScore") != null)
+        {
+            scoreUI = GameObject.Find("CoinScore").GetComponent<moneyUI>();
+        }
+        if (GameObject.Find("LifeScore") != null)
+        {
+            lifeUI = GameObject.Find("LifeScore").GetComponent<lifeUI>();
+        }
         //Score Money
         coinScore = 0; 
 
@@ -34,10 +43,16 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         
     }
-     void Update()
+    void Update()
     {
-        scoreUI.UpdateScoreUI(coinScore);
-        lifeUI.UpdateLifeUI(playerCont.GetLifes());
+        if (scoreUI != null)
+        {
+            scoreUI.UpdateScoreUI(coinScore);
+        }
+        if (lifeUI != null)
+        {
+            lifeUI.UpdateLifeUI(playerCont.GetLifes());
+        }
     }
     //Changes the value of Money, 
     public void SetMoney(int value)

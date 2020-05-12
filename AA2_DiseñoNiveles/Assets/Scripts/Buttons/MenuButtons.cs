@@ -17,12 +17,16 @@ public class MenuButtons : MonoBehaviour
     }
     public void StartLevel1()
     {
-        SceneManager.LoadScene(1);
+      
+        GameManager.level = 1;
         PlayerPrefs.SetInt("lifes", 3);
+        SceneManager.LoadScene(1);
     }
     public void StartLevel2()
     {
-        SceneManager.LoadScene(2);
+  
+        GameManager.level = 2;
         PlayerPrefs.SetInt("lifes", 3);
+        SceneManager.LoadScene(3);
     }
 }
