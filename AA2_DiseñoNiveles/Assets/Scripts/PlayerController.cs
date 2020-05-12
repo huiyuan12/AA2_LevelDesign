@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     private bool inmunity;
     public float timeInmunity;
     public float counterInmunity;
+
+    public int loseScore;
+    public int totalScore;
+    public int scorelv1;
+
+    public int highScore;
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -71,8 +77,27 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    //restar puntos en playerprefs
-                    SceneManager.LoadScene(0);
+                    if(GameManager.level == 1)
+                    {
+                        PlayerPrefs.SetInt("Score", gm.coinScore);
+                        if (gm.coinScore >= PlayerPrefs.GetInt("HighScore"))
+                        {
+                            PlayerPrefs.SetInt("HighScore", gm.coinScore);
+                        }
+
+                    }
+                    if (GameManager.level == 2)
+                    {
+                        gm.highScore = PlayerPrefs.GetInt("HighScore");
+                        //  totalScore = PlayerPrefs.GetInt("Score");
+                        totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+                        PlayerPrefs.SetInt("TotalScore", totalScore);
+                        if (totalScore >= gm.highScore)
+                        {
+                            PlayerPrefs.SetInt("HighScore", totalScore);
+                        }
+                    }
+                    SceneManager.LoadScene(4);
                 }
             }
             }
@@ -96,9 +121,26 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    //game over
-
-                    SceneManager.LoadScene(0);
+                    if (GameManager.level == 1)
+                    {
+                        PlayerPrefs.SetInt("Score", gm.coinScore);
+                        if (gm.coinScore >= PlayerPrefs.GetInt("HighScore"))
+                        {
+                            PlayerPrefs.SetInt("HighScore", gm.coinScore);
+                        }
+                    }
+                    if (GameManager.level == 2)
+                    {
+                        gm.highScore = PlayerPrefs.GetInt("HighScore");
+                        //  totalScore = PlayerPrefs.GetInt("Score");
+                        totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+                        PlayerPrefs.SetInt("TotalScore", totalScore);
+                        if (totalScore >= gm.highScore)
+                        {
+                            PlayerPrefs.SetInt("HighScore", totalScore);
+                        }
+                    }
+                    SceneManager.LoadScene(4);
                 }
             }
         }
@@ -113,14 +155,31 @@ public class PlayerController : MonoBehaviour
                     SceneManager.LoadScene(1);
                 }
                 else
+            {
+                if (GameManager.level == 1)
                 {
-                    //game over
-
-                    SceneManager.LoadScene(0);
+                    PlayerPrefs.SetInt("Score", gm.coinScore);
+                    if (gm.coinScore >= PlayerPrefs.GetInt("HighScore"))
+                    {
+                        PlayerPrefs.SetInt("HighScore", gm.coinScore);
+                    }
+                }
+                if (GameManager.level == 2)
+                {
+                    gm.highScore = PlayerPrefs.GetInt("HighScore");
+                    //totalScore = PlayerPrefs.GetInt("Score");
+                    totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+                    PlayerPrefs.SetInt("TotalScore", totalScore);
+                    if (totalScore >= gm.highScore)
+                    {
+                        PlayerPrefs.SetInt("HighScore", totalScore);
+                    }
+                }
+                SceneManager.LoadScene(4);
                 }
             }
-            if (other.tag == "BoxKill Player")
-        {
+            if (other.tag == "BoxKillPlayer")
+           {
             if (inmunity)
             {
                 Destroy(other.gameObject);
@@ -138,9 +197,26 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    //game over
-
-                    SceneManager.LoadScene(0);
+                    if (GameManager.level == 1)
+                    {
+                        PlayerPrefs.SetInt("Score", gm.coinScore);
+                        if (gm.coinScore >= PlayerPrefs.GetInt("HighScore"))
+                        {
+                            PlayerPrefs.SetInt("HighScore", gm.coinScore);
+                        }
+                    }
+                    if (GameManager.level == 2)
+                    {
+                        gm.highScore = PlayerPrefs.GetInt("HighScore");
+                        //  totalScore = PlayerPrefs.GetInt("Score");
+                        totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+                        PlayerPrefs.SetInt("TotalScore", totalScore);
+                        if (totalScore >= gm.highScore)
+                        {
+                            PlayerPrefs.SetInt("HighScore", totalScore);
+                        }
+                    }
+                    SceneManager.LoadScene(4);
                 }
             }
         }
@@ -150,13 +226,21 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag == "endLevel")
         {
-            gm.endlv1 = true;
+            SetLifes(3);
+            PlayerPrefs.SetInt("Score", gm.coinScore);
+            GameManager.level = 2;
             SceneManager.LoadScene(3);
         }
         if (other.tag == "endLevel2")
         {
-            gm.endlv2 = true;
-            SceneManager.LoadScene(0);
+            //  totalScore = PlayerPrefs.GetInt("Score");
+            totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+            PlayerPrefs.SetInt("TotalScore", totalScore);
+            if (totalScore >= PlayerPrefs.GetInt("HighScore"))
+            {
+                PlayerPrefs.SetInt("HighScore", totalScore);
+            }
+            SceneManager.LoadScene(5);
         }
     }
     public int GetMoney()

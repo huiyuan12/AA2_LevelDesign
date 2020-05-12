@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         highScore = PlayerPrefs.GetInt("HighScore");
         if (GameObject.Find("PlayerController") != null)
         {
@@ -61,22 +62,7 @@ public class GameManager : MonoBehaviour
         {
             lifeUI.UpdateLifeUI(playerCont.GetLifes());
         }
-        if (endlv1)
-        {
-            playerCont.SetLifes(3);
-            totalScore = coinScore *playerCont.lifes;
-            PlayerPrefs.SetInt("Score", totalScore);
-        }
-        if (endlv2)
-        {
-             totalScore = PlayerPrefs.GetInt("Score");
-             highScore = PlayerPrefs.GetInt("HighScore");
-            totalScore += coinScore*playerCont.lifes;
-            if(totalScore > highScore)
-            {
-                PlayerPrefs.SetInt("HighScore", totalScore);
-            }
-        }
+     
     }
     //Changes the value of Money, 
     public void SetMoney(int value)
