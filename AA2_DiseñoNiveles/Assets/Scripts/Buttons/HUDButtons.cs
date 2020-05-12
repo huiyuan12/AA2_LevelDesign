@@ -102,12 +102,31 @@ public class HUDButtons : MonoBehaviour
             Debug.Log("hi");
             string scene = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(scene);
+            gm.coinScore = 0;
 
         }
         else
         {
-            //game over
-            SceneManager.LoadScene(0);
+            if (GameManager.level == 1)
+            {
+                PlayerPrefs.SetInt("Score", gm.coinScore);
+                if (gm.coinScore >= PlayerPrefs.GetInt("HighScore"))
+                {
+                    PlayerPrefs.SetInt("HighScore", gm.coinScore);
+                }
+            }
+            if (GameManager.level == 2)
+            {
+                gm.highScore = PlayerPrefs.GetInt("HighScore");
+                //totalScore = PlayerPrefs.GetInt("Score");
+                gm.totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+                PlayerPrefs.SetInt("TotalScore", gm.totalScore);
+                if (gm.totalScore >= gm.highScore)
+                {
+                    PlayerPrefs.SetInt("HighScore", gm.totalScore);
+                }
+            }
+            SceneManager.LoadScene(4);
         }
     }
     public void GoMenu()
