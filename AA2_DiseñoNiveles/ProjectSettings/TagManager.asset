@@ -20,6 +20,8 @@ TagManager:
   - HorizontalPlatform
   - Lose
   - Inmunity
+  - endLevel
+  - endLevel2
   layers:
   - Default
   - TransparentFX

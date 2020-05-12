@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
+      
         speed = 2;
         timeInmunity = 10f; //10 segundos 
         counterInmunity = 0;
@@ -148,6 +148,16 @@ public class PlayerController : MonoBehaviour
         {
             inmunity = true;
         }
+        if (other.tag == "endLevel")
+        {
+            gm.endlv1 = true;
+            SceneManager.LoadScene(3);
+        }
+        if (other.tag == "endLevel2")
+        {
+            gm.endlv2 = true;
+            SceneManager.LoadScene(0);
+        }
     }
     public int GetMoney()
     {
@@ -163,6 +173,6 @@ public class PlayerController : MonoBehaviour
     }
     public void SetLifes(int m)
     {
-        PlayerPrefs.SetInt("lifes", 3);
+        PlayerPrefs.SetInt("lifes", m);
     }
 }
