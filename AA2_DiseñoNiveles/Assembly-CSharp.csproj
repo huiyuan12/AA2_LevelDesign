@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Buttons\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\Buttons\scriptOnDrag.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
+    <Compile Include="Assets\Scripts\Coins.cs" />
     <Compile Include="Assets\Scripts\DiagonalPlatform.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HorizontalPlatform.cs" />

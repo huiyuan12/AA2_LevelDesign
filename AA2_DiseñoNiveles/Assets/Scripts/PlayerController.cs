@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     public float timeInmunity;
     public float counterInmunity;
 
+    public static bool gotIman;
+    public float timeIman;
+    public float counterIman;
+
     public int loseScore;
     public int totalScore;
     public int scorelv1;
@@ -25,6 +29,9 @@ public class PlayerController : MonoBehaviour
         speed = 2;
         timeInmunity = 10f; //10 segundos 
         counterInmunity = 0;
+        timeIman = 25f; //10 segundos 
+        counterIman = 0;
+        gotIman = false;
     }
 
     // Update is called once per frame
@@ -41,10 +48,19 @@ public class PlayerController : MonoBehaviour
 
             if (counterInmunity > timeInmunity)
             {
+                counterInmunity = 0;
                 inmunity = false;
             }
         }
-      
+        if (gotIman)
+        {
+            counterIman += Time.deltaTime;
+            if (counterIman > timeIman)
+            {
+                counterIman = 0;
+                gotIman = false;
+            }
+        }
     }
     void OnTriggerEnter(Collider other)
     {
@@ -54,11 +70,17 @@ public class PlayerController : MonoBehaviour
             gm.SetMoney(gm.coinValue); //GiveMoney to GameManager
             Destroy(other.gameObject);   // Destroys the money
         }
+        if (other.tag == "Iman")
+        {
+            gotIman = true;
+          
+            Destroy(other.gameObject);   // Destroys the money
+        }
         //Logical between scenes
         //If player collides box, we get total lifes, if we have more than 0 lifes, the current level/scene will be restarted, otherwise we will send the player to the menu
         //This makes sense when are at level 2. 
-    
-            if (other.tag == "Box")
+
+        if (other.tag == "Box")
         {
             if (inmunity)
             {
