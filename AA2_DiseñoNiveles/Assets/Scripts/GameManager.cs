@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public bool endlv1;
     public bool endlv2;
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +46,8 @@ public class GameManager : MonoBehaviour
         //Giving values
         coinValue = 1;
         valueDiagonalPlatform = 1;
-        valueHorizontalPlatform = 0;
-        valueBoxKiller = 0;
+        valueHorizontalPlatform = 1;
+        valueBoxKiller = 2;
         isPaused = false;
         endlv1 = false;
         endlv2 = false;
