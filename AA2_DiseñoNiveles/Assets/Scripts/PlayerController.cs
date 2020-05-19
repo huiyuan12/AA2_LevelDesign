@@ -259,14 +259,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag == "endLevel2")
         {
-            //  totalScore = PlayerPrefs.GetInt("Score");
-            totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
-            PlayerPrefs.SetInt("TotalScore", totalScore);
-            if (totalScore >= PlayerPrefs.GetInt("HighScore"))
-            {
-                PlayerPrefs.SetInt("HighScore", totalScore);
-            }
-            SceneManager.LoadScene(5);
+            StartCoroutine(CompleteLevel2());
         }
     }
     public int GetMoney()
@@ -295,6 +288,22 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("Score", gm.coinScore);
         GameManager.level = 2;
         SceneManager.LoadScene(3);
+
+    }
+    IEnumerator CompleteLevel2()
+    {
+        float speed2 = speed;
+        speed = 0;
+        yield return new WaitForSeconds(2);
+        speed = speed2;
+        //  totalScore = PlayerPrefs.GetInt("Score");
+        totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+        PlayerPrefs.SetInt("TotalScore", totalScore);
+        if (totalScore >= PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", totalScore);
+        }
+        SceneManager.LoadScene(5);
 
     }
 }
