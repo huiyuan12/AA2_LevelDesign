@@ -259,7 +259,15 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag == "endLevel2")
         {
-            StartCoroutine(CompleteLevel2());
+            //StartCoroutine(CompleteLevel2());
+            //  totalScore = PlayerPrefs.GetInt("Score");
+            totalScore = gm.coinScore + PlayerPrefs.GetInt("Score");
+            PlayerPrefs.SetInt("TotalScore", totalScore);
+            if (totalScore >= PlayerPrefs.GetInt("HighScore"))
+            {
+                PlayerPrefs.SetInt("HighScore", totalScore);
+            }
+            SceneManager.LoadScene(5);
         }
     }
     public int GetMoney()
