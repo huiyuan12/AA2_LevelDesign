@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public int scorelv1;
 
     public int highScore;
+
+    AudioSource audio;
+
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
         timeIman = 25f; //10 segundos 
         counterIman = 0;
         gotIman = false;
+        audio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -69,6 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             gm.SetMoney(gm.coinValue); //GiveMoney to GameManager
             Destroy(other.gameObject);   // Destroys the money
+            audio.Play();
         }
         if (other.tag == "Iman")
         {
