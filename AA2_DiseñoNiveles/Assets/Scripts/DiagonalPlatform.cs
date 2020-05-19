@@ -7,10 +7,13 @@ public class DiagonalPlatform : MonoBehaviour
     public bool isPuttedOnScene;
     BoxCollider coliders; //colliders we will disable when we are dragging object
     private Rigidbody rb;
+    public MeshCollider meshCollider;
     void Start()
     {
         isPuttedOnScene = false;
         coliders = GetComponent<BoxCollider>();
+        
+        
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class DiagonalPlatform : MonoBehaviour
             pos = Camera.main.ScreenToWorldPoint(pos);
             transform.position = pos;
             coliders.enabled = false;
+            meshCollider.enabled = false;
         }
         //when the player press mouse button, the object will have the position on last click of mouse, and we active colliders with the world. 
         //Also we delete this script, otherwise the object will change always the position to last click. (Test without the Destroy)
@@ -35,7 +39,8 @@ public class DiagonalPlatform : MonoBehaviour
             transform.position = pos;
             coliders.enabled = true;
             isPuttedOnScene = true;
-           
+            meshCollider.enabled = true;
+
         }
     }
     void OnTriggerEnter(Collider other)

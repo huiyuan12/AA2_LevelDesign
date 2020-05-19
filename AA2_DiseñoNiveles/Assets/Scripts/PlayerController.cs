@@ -254,10 +254,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag == "endLevel")
         {
-            SetLifes(3);
-            PlayerPrefs.SetInt("Score", gm.coinScore);
-            GameManager.level = 2;
-            SceneManager.LoadScene(3);
+            StartCoroutine(CompleteLevel());
+
         }
         if (other.tag == "endLevel2")
         {
@@ -286,5 +284,17 @@ public class PlayerController : MonoBehaviour
     public void SetLifes(int m)
     {
         PlayerPrefs.SetInt("lifes", m);
+    }
+    IEnumerator CompleteLevel()
+    {
+        float speed2 = speed;
+        speed = 0;
+        yield return new WaitForSeconds(2);
+        speed = speed2 ;
+        SetLifes(3);
+        PlayerPrefs.SetInt("Score", gm.coinScore);
+        GameManager.level = 2;
+        SceneManager.LoadScene(3);
+
     }
 }

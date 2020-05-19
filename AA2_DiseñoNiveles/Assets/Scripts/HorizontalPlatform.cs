@@ -6,6 +6,8 @@ public class HorizontalPlatform : MonoBehaviour
 {
     public bool isPuttedOnScene;
     BoxCollider coliders; //colliders we will disable when we are dragging object
+    public MeshCollider meshCollider;
+    public MeshCollider meshCollider2;
     void Start()
     {
         isPuttedOnScene = false;
@@ -23,6 +25,8 @@ public class HorizontalPlatform : MonoBehaviour
             pos = Camera.main.ScreenToWorldPoint(pos);
             transform.position = pos;
             coliders.enabled = false;
+            meshCollider.enabled = false;
+            meshCollider2.enabled = false;
         }
         //when the player press mouse button, the object will have the position on last click of mouse, and we active colliders with the world. 
 
@@ -34,6 +38,8 @@ public class HorizontalPlatform : MonoBehaviour
             transform.position = pos;
             coliders.enabled = true;
             isPuttedOnScene = true;
+            meshCollider.enabled = true;
+            meshCollider2.enabled = true;
 
         }
     }

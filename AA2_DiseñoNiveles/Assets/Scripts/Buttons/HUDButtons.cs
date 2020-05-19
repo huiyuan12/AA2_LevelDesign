@@ -30,6 +30,21 @@ public class HUDButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gm.isPaused)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenu();
+            }
+        }
+        else
+        { 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                continueGame();
+            }
+        }
+
     }
 
     //Button that creates an diagonal platform if there is enough money
